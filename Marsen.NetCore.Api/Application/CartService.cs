@@ -20,16 +20,18 @@ namespace Marsen.NetCore.Api.Application
 
         public CartView GetCart()
         {
-            return new ()
+            return new()
             {
                 ProductList = _cart
                     .ProductList
                     .Select(p => new ProductView()
                     {
                         Name = p.Product.Name,
-                        Price = p.Product.Price.ToString()
+                        Price = p.Product.Price.ToString(),
+                        Qty = p.Qty,
+                        SubTotal = p.SubTotal
                     }),
-                TotalPrice = _cart.TotalPrice
+                TotalPrice = _cart.TotalPrice,
             };
         }
     }
