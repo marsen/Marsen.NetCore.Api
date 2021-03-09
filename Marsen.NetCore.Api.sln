@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Marsen.NetCore.Api", "Marsen.NetCore.Api\Marsen.NetCore.Api.csproj", "{03F0B246-24F3-4B3A-A5E5-9A83AA8646DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Marsen.NetCore.Api.Tests", "Marsen.NetCore.Api.Tests\Marsen.NetCore.Api.Tests.csproj", "{56A1FD60-1F7F-48FB-B767-02EC8AB0A04F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Marsen.NetCore.Tests", "Marsen.NetCore.Tests\Marsen.NetCore.Tests.csproj", "{73F645B8-25A3-4E2C-953D-CC652BD33089}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -14,9 +14,9 @@ Global
 		{03F0B246-24F3-4B3A-A5E5-9A83AA8646DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{03F0B246-24F3-4B3A-A5E5-9A83AA8646DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{03F0B246-24F3-4B3A-A5E5-9A83AA8646DF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{56A1FD60-1F7F-48FB-B767-02EC8AB0A04F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{56A1FD60-1F7F-48FB-B767-02EC8AB0A04F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{56A1FD60-1F7F-48FB-B767-02EC8AB0A04F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{56A1FD60-1F7F-48FB-B767-02EC8AB0A04F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73F645B8-25A3-4E2C-953D-CC652BD33089}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73F645B8-25A3-4E2C-953D-CC652BD33089}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73F645B8-25A3-4E2C-953D-CC652BD33089}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73F645B8-25A3-4E2C-953D-CC652BD33089}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
