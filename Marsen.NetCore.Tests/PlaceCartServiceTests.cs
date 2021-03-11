@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Xunit;
 
 namespace Marsen.NetCore.Api.Tests
@@ -8,28 +9,26 @@ namespace Marsen.NetCore.Api.Tests
         readonly PlaceCartService placeCartService = new();
 
         [Fact]
-        public void TestPutIn()
+        public void TestCartTotal()
         {
-            var product = new LineItemDTO {Name = "Milk", Price = 7, Qty = 2, SubTotal = 14};
-            placeCartService.PutIn(product);
+            var cart = new CartDTO
+            {
+                LineItemList = new List<LineItemDTO> { new() { Name = "Milk", Price = 7, Qty = 2, SubTotal = 14}},
+                Total = 14
+            };
+            placeCartService.PutIn(cart);
+            ////TODO:Assert Total
         }
     }
 
     public class PlaceCartService
     {
-        private CartDTO _cart = new ();
-
-        public void PutIn(LineItemDTO lineItem)
+        public void PutIn(CartDTO cart)
         {
-            _cart.LineItemList.Add(lineItem);
-            this.calcTotal(lineItem);
+            ////TODO:Update Cart?
+            throw new NotImplementedException();
         }
 
-        private CartDTO calcTotal(LineItemDTO lineItem)
-        {
-            //// TODO:DISCOUNT
-            return _cart;
-        }
     }
 
     public class LineItemDTO
@@ -42,7 +41,7 @@ namespace Marsen.NetCore.Api.Tests
 
     public class CartDTO
     {
-        public List<LineItemDTO> LineItemList = new();
+        public List<LineItemDTO> LineItemList { get; set; }
         public int Total { get; set; }
     }
 }
