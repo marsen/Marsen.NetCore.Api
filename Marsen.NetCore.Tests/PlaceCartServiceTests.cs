@@ -11,22 +11,37 @@ namespace Marsen.NetCore.Api.Tests
         [Fact]
         public void TestCartTotal()
         {
+            var cart = GetTestCart();
+            placeCartService.PutIn(cart);
+            Assert.Equal(29,cart.Total);
+        }
+
+        private  CartDTO GetTestCart()
+        {
             var cart = new CartDTO
             {
-                LineItemList = new List<LineItemDTO> { new() { Name = "Milk", Price = 7, Qty = 2, SubTotal = 14}},
+                LineItemList = new List<LineItemDTO>
+                {
+                    new() {Name = "Milk", Price = 7, Qty = 2, SubTotal = 14},
+                    new() {Name = "Oil", Price = 5, Qty = 3, SubTotal = 15},
+                },
+                Total = 14
             };
-            placeCartService.Calculate(cart);
-            Assert.Equal(14,cart.Total);
+            return cart;
         }
     }
 
     public class PlaceCartService
     {
-        public void Calculate(CartDTO cart)
+        public void PutIn(CartDTO cart)
+        {
+            _cal(cart);
+        }
+
+        private void _cal(CartDTO cart)
         {
             cart.Total = cart.LineItemList.Sum(x => x.SubTotal);
         }
-
     }
 
     public class LineItemDTO
