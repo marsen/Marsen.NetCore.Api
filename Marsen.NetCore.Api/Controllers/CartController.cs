@@ -34,5 +34,22 @@ namespace Marsen.NetCore.Api.Controllers
             ///  
             throw new NotImplementedException("No result");
         }
+
+        [HttpGet]
+        public IActionResult PutIn(LineItemDto item)
+        {
+            try
+            {
+                var cart = service.GetCart();
+                cart.LineItemList.Add(item);
+                service.PutIn(cart);
+            }
+            catch 
+            {
+                return BadRequest();
+            }
+
+            return Ok();
+        }
     }
 }
