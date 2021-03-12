@@ -24,6 +24,14 @@ namespace Marsen.NetCore.Api.Controllers
         [HttpGet]
         public JsonResult Get(CartDto cart)
         {
+            service.PutIn(cart);
+            /// TODO: which One is Better
+            /// 1.
+            /// service.PutIn(cart);
+            /// return service.GetCart();
+            /// 2.
+            /// return service.PutIn(cart);
+            ///  
             throw new NotImplementedException("No result");
         }
     }
