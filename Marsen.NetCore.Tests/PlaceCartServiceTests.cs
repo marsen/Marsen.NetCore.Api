@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Xunit;
 
 namespace Marsen.NetCore.Api.Tests
@@ -14,19 +14,17 @@ namespace Marsen.NetCore.Api.Tests
             var cart = new CartDTO
             {
                 LineItemList = new List<LineItemDTO> { new() { Name = "Milk", Price = 7, Qty = 2, SubTotal = 14}},
-                Total = 14
             };
-            placeCartService.PutIn(cart);
-            ////TODO:Assert Total
+            placeCartService.Calculate(cart);
+            Assert.Equal(14,cart.Total);
         }
     }
 
     public class PlaceCartService
     {
-        public void PutIn(CartDTO cart)
+        public void Calculate(CartDTO cart)
         {
-            ////TODO:Update Cart?
-            throw new NotImplementedException();
+            cart.Total = cart.LineItemList.Sum(x => x.SubTotal);
         }
 
     }
