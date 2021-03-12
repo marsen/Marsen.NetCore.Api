@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using FluentAssertions;
 using Xunit;
 
 namespace Marsen.NetCore.Api.Tests
@@ -11,9 +12,10 @@ namespace Marsen.NetCore.Api.Tests
         [Fact]
         public void TestCartTotal()
         {
+            var expected = 29;
             var cart = GetTestCart();
             placeCartService.PutIn(cart);
-            Assert.Equal(29,cart.Total);
+            cart.Total.Should().Be(expected);
         }
 
         private  CartDTO GetTestCart()
