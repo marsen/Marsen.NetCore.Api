@@ -1,0 +1,88 @@
+Namespace core.service
+{
+	public class PlaceCartService
+	{
+		private CartDTO _cart;
+		
+		// constructor
+		public void PlaceCartService()
+		{
+			_cart = new CartDTO();
+		}
+		
+		public void PutIn(CartDTO cart)
+		{
+			_cart = cart;
+			this.calcCartTotal();
+		}
+		
+		// Overload
+		public void PutIn(LineItem item)
+		{
+			_cart.LineItemList.add(item);
+			this.calcCartTotal();
+		}		
+		
+		private void calcCartTotal()
+		{
+			int Total;
+			// for each lineItem do
+			// calcSubTotal() -> Total
+			_cart.Total = Total;
+		}
+		
+		public CartDTO Get()
+		{
+			return _cart;
+		}
+	}	
+}
+
+// Another Project for Test Unit
+Namespace core.service.test;
+{
+    public class PlaceCartServiceTests
+    {
+        readonly PlaceCartService placeCartService = new();
+
+        [Fact]
+        public void TestCartTotal()
+        {
+            int expected = 14; //期望值
+			int actual ;       //實際運算值
+			
+			// Get Actual Value
+            placeCartService.PutIn(this.GetTestCart());
+			actual = placeCartService.Get().Total();
+			
+			// 斷言比對
+            Assert.AreEqual(expected, actual);
+        }
+		
+		pvivate CartDTO GetTestCart()
+		{
+			var cart = new CartDTO
+            {
+                LineItemList = new List<LineItemDTO> { new() { Name = "Milk", Price = 7, Qty = 2, SubTotal = 14}},
+                Total = 14
+            };
+		}
+}
+
+Namespace core.service.dto;
+{
+    public class LineItemDTO
+    {
+        public string Name { get; set; }
+        public int Qty { get; set; }
+        public int Price { get; set; }
+        public int SubTotal { get; set; }
+    }
+
+    public class CartDTO
+    {
+        public List<LineItemDTO> LineItemList { get; set; }
+        public int Total { get; set; }
+    }
+}
+
