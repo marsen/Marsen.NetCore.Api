@@ -67,7 +67,7 @@ Namespace core.service.test;
                     new() {Name = "Milk", Price = 7, Qty = 2, SubTotal = 14},
                     new() {Name = "Oil", Price = 5, Qty = 3, SubTotal = 15},                
 			},
-                Total = 14
+                Total = 29
             };
 		}
 }
