@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using FluentAssertions;
+using Marsen.NetCore.Api.Application;
+using Marsen.NetCore.Api.Model;
 using Xunit;
 
 namespace Marsen.NetCore.Api.Tests
@@ -18,11 +19,11 @@ namespace Marsen.NetCore.Api.Tests
             cart.Total.Should().Be(expected);
         }
 
-        private  CartDTO GetTestCart()
+        private  CartDto GetTestCart()
         {
-            var cart = new CartDTO
+            var cart = new CartDto
             {
-                LineItemList = new List<LineItemDTO>
+                LineItemList = new List<LineItemDto>
                 {
                     new() {Name = "Milk", Price = 7, Qty = 2, SubTotal = 14},
                     new() {Name = "Oil", Price = 5, Qty = 3, SubTotal = 15},
@@ -31,32 +32,5 @@ namespace Marsen.NetCore.Api.Tests
             };
             return cart;
         }
-    }
-
-    public class PlaceCartService
-    {
-        public void PutIn(CartDTO cart)
-        {
-            _cal(cart);
-        }
-
-        private void _cal(CartDTO cart)
-        {
-            cart.Total = cart.LineItemList.Sum(x => x.SubTotal);
-        }
-    }
-
-    public class LineItemDTO
-    {
-        public string Name { get; set; }
-        public int Qty { get; set; }
-        public int Price { get; set; }
-        public int SubTotal { get; set; }
-    }
-
-    public class CartDTO
-    {
-        public List<LineItemDTO> LineItemList { get; set; }
-        public int Total { get; set; }
     }
 }
