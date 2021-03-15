@@ -10,5 +10,9 @@
 dotnet run
 ```
 
+## CTD Practice
+
+https://hackmd.io/X4q5EhhYTxukcSN_0RoIzg
+
 
 (fin)
