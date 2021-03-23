@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Marsen.NetCore.Api.Application;
+﻿using Marsen.NetCore.Api.Application;
 using Marsen.NetCore.Api.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -14,7 +10,7 @@ namespace Marsen.NetCore.Api.Controllers
     public class CartController : ControllerBase
     {
         private readonly ILogger<CartController> _logger;
-        readonly PlaceCartService service = new PlaceCartService();
+        readonly PlaceCartService service = new();
 
         public CartController(ILogger<CartController> logger)
         {

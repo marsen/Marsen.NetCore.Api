@@ -2,9 +2,9 @@
 {
     public class LineItemDto
     {
-        public string Name { get; set; }
-        public int Qty { get; set; }
-        public int Price { get; set; }
-        public int SubTotal { get; set; }
+        public string Name { get; init; }
+        public int Qty { get; init; }
+        public int Price { get; init; }
+        public int SubTotal { get; init; }
     }
 }
