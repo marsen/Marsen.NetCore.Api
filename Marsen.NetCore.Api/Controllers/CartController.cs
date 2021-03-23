@@ -24,6 +24,7 @@ namespace Marsen.NetCore.Api.Controllers
         [HttpGet]
         public JsonResult Get(CartDto cart)
         {
+            return new(cart);
         }
     }
 }
