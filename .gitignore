@@ -1,4 +1,4 @@
 ﻿.idea/.idea.Marsen.NetCore.Api/.idea
-Marsen.NetCore.Api.sln.DotSettings.user
-Marsen.NetCore.Api.Tests/bin
-Marsen.NetCore.Api.Tests/obj
+*/bin/Debug
+*/obj
+*.user
