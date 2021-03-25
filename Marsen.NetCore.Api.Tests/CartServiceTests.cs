@@ -25,6 +25,15 @@ namespace Marsen.NetCore.Api.Tests
             var item = this._cart.GetCart().LineItems.First();
             Assert.Equal(10,item.Subtotal);
         }
+
+        [Fact]
+        public void TestSubTotalShouldBePriceMultiplyByQty()
+        {
+            this._cart.PutIn(milk);
+            this._cart.PutIn(milk);
+            var item = this._cart.GetCart().LineItems.First();
+            Assert.Equal(20,item.Subtotal);
+        }
     }
 
     public class LineItem
