@@ -20,4 +20,8 @@
         </PackageReference>
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Marsen.NetCore.Api\Marsen.NetCore.Api.csproj" />
+    </ItemGroup>
+
 </Project>
