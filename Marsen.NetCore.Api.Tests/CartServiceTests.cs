@@ -7,13 +7,14 @@ namespace Marsen.NetCore.Api.Tests
 {
     public class CartServiceTests
     {
+        readonly CartService _cart = new();
+
         [Fact]
         public void TestPutIn()
         {
-            CartService cartService = new CartService();
             var lineItem = new LineItem {Name = "Milk"};
-            cartService.PutIn(lineItem);
-            var cart = cartService.GetCart();
+            this._cart.PutIn(lineItem);
+            var cart = this._cart.GetCart();
             var actual = cart.LineItems.Contains(lineItem);
             Assert.Equal(true, actual);
         }
@@ -26,7 +27,7 @@ namespace Marsen.NetCore.Api.Tests
 
     public class CartService
     {
-        readonly CartDTO _dto = new CartDTO{ LineItems = new List<LineItem>() };
+        readonly CartDTO _dto = new CartDTO {LineItems = new List<LineItem>()};
 
         public void PutIn(LineItem lineItem)
         {
