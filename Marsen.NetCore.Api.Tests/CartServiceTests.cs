@@ -33,7 +33,7 @@ namespace Marsen.NetCore.Api.Tests
         {
             this._cart.PutIn(milk);
             this._cart.PutIn(milk);
-            var item = this._cart.GetCart().LineItems.First();
+            var item = this._cart.GetCart().LineItems.First(x => x.Id == null);
             Assert.Equal(20, item.Subtotal);
         }
 
