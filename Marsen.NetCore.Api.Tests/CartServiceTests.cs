@@ -10,7 +10,8 @@ namespace Marsen.NetCore.Api.Tests
     public class CartServiceTests
     {
         readonly CartService _cart = new();
-        readonly LineItemDTO milk = new() {Name = "Milk", Subtotal = 10, Price = 10, Qty = 1};
+        readonly LineItemDTO milk = new() {Name = "Milk", Price = 10, Qty = 1, Subtotal = 10};
+        readonly LineItemDTO oil = new() {Name = "Oil", Price = 7};
 
         [Fact]
         public void TestPutIn()
@@ -48,8 +49,9 @@ namespace Marsen.NetCore.Api.Tests
         public void TestTotal()
         {
             this._cart.PutIn(milk, 2);
+            this._cart.PutIn(oil, 2);
             var item = this._cart.GetCart();
-            Assert.Equal(20, item.Total);
+            Assert.Equal(34, item.Total);
         }
     }
 }
