@@ -1,12 +1,12 @@
 using System;
 using Xunit;
 
-namespace TestProject1
+namespace Marsen.NetCore.Api.Tests
 {
-    public class UnitTest1
+    public class CartServiceTests
     {
         [Fact]
-        public void METHOD()
+        public void TestSubTotal()
         {
             throw new NotImplementedException();
         }
