@@ -13,7 +13,7 @@ namespace Marsen.NetCore.Api.Services
             var list = _dto.LineItems.ToList();
             if (list.Contains(lineItemDto))
             {
-                var item = list.FirstOrDefault(x => x.Id == lineItemDto.Id);
+                var item = list.First(x => x.Id == lineItemDto.Id);
                 item.Qty++;
             }
             else
