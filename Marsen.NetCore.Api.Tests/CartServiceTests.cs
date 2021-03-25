@@ -10,8 +10,8 @@ namespace Marsen.NetCore.Api.Tests
     public class CartServiceTests
     {
         readonly CartService _cart = new();
-        readonly LineItemDTO milk = new() {Id = "lineItem_Milk", Name = "Milk", Price = 10};
-        readonly LineItemDTO oil = new() {Name = "Oil", Price = 7};
+        readonly LineItemDTO milk = new() {Id = "MilkId", Name = "Milk", Price = 10};
+        readonly LineItemDTO oil = new() {Id = "OilId", Name = "Oil", Price = 7};
 
         [Fact]
         public void TestPutIn()
@@ -34,7 +34,7 @@ namespace Marsen.NetCore.Api.Tests
             this._cart.PutIn(oil);
             this._cart.PutIn(milk);
             this._cart.PutIn(milk);
-            var item = this._cart.GetCart().LineItems.First(x => x.Id == "lineItem_Milk");
+            var item = this._cart.GetCart().LineItems.First(x => x.Id == "MilkId");
             Assert.Equal(20, item.Subtotal);
         }
 
@@ -43,7 +43,7 @@ namespace Marsen.NetCore.Api.Tests
         {
             this._cart.PutIn(oil);
             this._cart.PutIn(milk, 2);
-            var item = this._cart.GetCart().LineItems.First(x => x.Id == "lineItem_Milk");
+            var item = this._cart.GetCart().LineItems.First(x => x.Id == "MilkId");
             Assert.Equal(20, item.Subtotal);
         }
 
