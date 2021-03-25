@@ -85,6 +85,7 @@ namespace Marsen.NetCore.Api.Tests
 
         public CartDTO GetCart()
         {
+            _dto.Total = _dto.LineItems.Sum(x => x.Subtotal);
             return _dto;
         }
     }
