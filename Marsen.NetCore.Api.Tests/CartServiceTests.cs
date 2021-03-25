@@ -31,6 +31,7 @@ namespace Marsen.NetCore.Api.Tests
         [Fact]
         public void TestSubTotalShouldBePriceMultiplyByQty()
         {
+            this._cart.PutIn(oil);
             this._cart.PutIn(milk);
             this._cart.PutIn(milk);
             var item = this._cart.GetCart().LineItems.First(x => x.Id == null);
