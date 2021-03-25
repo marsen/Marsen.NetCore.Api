@@ -57,7 +57,7 @@ namespace Marsen.NetCore.Api.Tests
     {
         readonly CartDTO _dto = new() {LineItems = new List<LineItemDTO>()};
 
-        public void PutIn(LineItemDTO lineItemDto)
+        public void PutIn(LineItemDTO lineItemDto, int qty=1)
         {
             var list = _dto.LineItems.ToList();
             if (list.Contains(lineItemDto))
