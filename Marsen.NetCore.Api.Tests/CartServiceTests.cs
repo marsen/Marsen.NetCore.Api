@@ -9,7 +9,7 @@ namespace Marsen.NetCore.Api.Tests
     public class CartServiceTests
     {
         readonly CartService _cart = new();
-        readonly LineItem milk = new() {Name = "Milk", Subtotal = 10, Price = 10, Qty = 1};
+        readonly LineItemDTO milk = new() {Name = "Milk", Subtotal = 10, Price = 10, Qty = 1};
 
         [Fact]
         public void TestPutIn()
@@ -36,7 +36,7 @@ namespace Marsen.NetCore.Api.Tests
         }
     }
 
-    public class LineItem
+    public class LineItemDTO
     {
         public string Name { get; set; }
         public int Subtotal { get; set; }
@@ -47,19 +47,19 @@ namespace Marsen.NetCore.Api.Tests
 
     public class CartService
     {
-        readonly CartDTO _dto = new() {LineItems = new List<LineItem>()};
+        readonly CartDTO _dto = new() {LineItems = new List<LineItemDTO>()};
 
-        public void PutIn(LineItem lineItem)
+        public void PutIn(LineItemDTO lineItemDto)
         {
             var list = _dto.LineItems.ToList();
-            if (list.Contains(lineItem))
+            if (list.Contains(lineItemDto))
             {
-                var item = list.FirstOrDefault(x=>x.Id == lineItem.Id);
+                var item = list.FirstOrDefault(x=>x.Id == lineItemDto.Id);
                 item.Qty++;
             }
             else
             {
-                list.Add(lineItem);
+                list.Add(lineItemDto);
             }
 
             list.ForEach(x => x.Subtotal = x.Qty * x.Price);
@@ -74,6 +74,6 @@ namespace Marsen.NetCore.Api.Tests
 
     public class CartDTO
     {
-        public IEnumerable<LineItem> LineItems { get; set; }
+        public IEnumerable<LineItemDTO> LineItems { get; set; }
     }
 }
