@@ -34,8 +34,7 @@ namespace Marsen.NetCore.Api.Tests
             this._cart.PutIn(oil);
             this._cart.PutIn(milk);
             this._cart.PutIn(milk);
-            var item = GetItemInCartBy("MilkId");
-            Assert.Equal(20, item.Subtotal);
+            GetLineItemInCartBy("MilkId").Subtotal.Should().Be(20);
         }
 
 
@@ -44,8 +43,7 @@ namespace Marsen.NetCore.Api.Tests
         {
             this._cart.PutIn(oil);
             this._cart.PutIn(milk, 2);
-            var item = GetItemInCartBy("MilkId");
-            Assert.Equal(20, item.Subtotal);
+            GetLineItemInCartBy("MilkId").Subtotal.Should().Be(20);
         }
 
         [Fact]
@@ -57,7 +55,7 @@ namespace Marsen.NetCore.Api.Tests
             Assert.Equal(34, item.Total);
         }
 
-        private LineItemDTO GetItemInCartBy(string id)
+        private LineItemDTO GetLineItemInCartBy(string id)
         {
             return this._cart.GetCart().LineItems.First(x => x.Id == id);
         }
