@@ -67,6 +67,7 @@ namespace Marsen.NetCore.Api.Tests
             }
             else
             {
+                lineItemDto.Qty = qty;
                 list.Add(lineItemDto);
             }
 
