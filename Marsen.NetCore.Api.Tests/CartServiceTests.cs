@@ -9,14 +9,13 @@ namespace Marsen.NetCore.Api.Tests
     public class CartServiceTests
     {
         readonly CartService _cart = new();
+        readonly LineItem milk = new() {Name = "Milk"};
 
         [Fact]
         public void TestPutIn()
         {
-            var lineItem = new LineItem {Name = "Milk"};
-            this._cart.PutIn(lineItem);
-            var cart = this._cart.GetCart();
-            cart.LineItems.Should().Contain(lineItem);
+            this._cart.PutIn(milk);
+            this._cart.GetCart().LineItems.Should().Contain(milk);
         }
     }
 
