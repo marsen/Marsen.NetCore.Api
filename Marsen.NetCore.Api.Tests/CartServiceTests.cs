@@ -41,8 +41,9 @@ namespace Marsen.NetCore.Api.Tests
         [Fact]
         public void TestSubTotalPutInSpecifiedQty()
         {
+            this._cart.PutIn(oil);
             this._cart.PutIn(milk, 2);
-            var item = this._cart.GetCart().LineItems.First();
+            var item = this._cart.GetCart().LineItems.First(x => x.Id == "lineItem_Milk");
             Assert.Equal(20, item.Subtotal);
         }
 
