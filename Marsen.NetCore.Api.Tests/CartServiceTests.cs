@@ -11,9 +11,10 @@ namespace Marsen.NetCore.Api.Tests
         public void TestPutIn()
         {
             CartService cartService = new CartService();
-            cartService.PutIn(new LineItem {Name = "Milk"});
+            var lineItem = new LineItem {Name = "Milk"};
+            cartService.PutIn(lineItem);
             var cart = cartService.GetCart();
-            var actual = cart.LineItems.Contains(new LineItem {Name = "Milk"});
+            var actual = cart.LineItems.Contains(lineItem);
             Assert.Equal(true, actual);
         }
     }
@@ -25,14 +26,18 @@ namespace Marsen.NetCore.Api.Tests
 
     public class CartService
     {
+        readonly CartDTO _dto = new CartDTO{ LineItems = new List<LineItem>() };
+
         public void PutIn(LineItem lineItem)
         {
-            throw new NotImplementedException();
+            var list = _dto.LineItems.ToList();
+            list.Add(lineItem);
+            _dto.LineItems = list;
         }
 
         public CartDTO GetCart()
         {
-            throw new NotImplementedException();
+            return _dto;
         }
     }
 
