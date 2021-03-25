@@ -42,6 +42,14 @@ namespace Marsen.NetCore.Api.Tests
             var item = this._cart.GetCart().LineItems.First();
             Assert.Equal(20, item.Subtotal);
         }
+
+        [Fact]
+        public void TestTotal()
+        {
+            this._cart.PutIn(milk, 2);
+            var item = this._cart.GetCart();
+            Assert.Equal(20, item.Total);
+        }
     }
 
     public class LineItemDTO
@@ -84,5 +92,6 @@ namespace Marsen.NetCore.Api.Tests
     public class CartDTO
     {
         public IEnumerable<LineItemDTO> LineItems { get; set; }
+        public int Total { get; set; }
     }
 }
