@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using FluentAssertions;
 using Xunit;
 
 namespace Marsen.NetCore.Api.Tests
@@ -15,8 +16,7 @@ namespace Marsen.NetCore.Api.Tests
             var lineItem = new LineItem {Name = "Milk"};
             this._cart.PutIn(lineItem);
             var cart = this._cart.GetCart();
-            var actual = cart.LineItems.Contains(lineItem);
-            Assert.Equal(true, actual);
+            cart.LineItems.Should().Contain(lineItem);
         }
     }
 
