@@ -34,6 +34,7 @@ namespace Marsen.NetCore.Api.Tests
             this._cart.PutIn(oil);
             this._cart.PutIn(milk);
             this._cart.PutIn(milk);
+            LineItemInCart("OilId").Subtotal.Should().Be(7);
             LineItemInCart("MilkId").Subtotal.Should().Be(20);
         }
 
@@ -42,6 +43,7 @@ namespace Marsen.NetCore.Api.Tests
         {
             this._cart.PutIn(oil);
             this._cart.PutIn(milk, 2);
+            LineItemInCart("OilId").Subtotal.Should().Be(7);
             LineItemInCart("MilkId").Subtotal.Should().Be(20);
         }
 
