@@ -10,7 +10,7 @@ namespace Marsen.NetCore.Api.Tests
     public class CartServiceTests
     {
         readonly CartService _cart = new();
-        readonly LineItemDTO milk = new() {Name = "Milk", Price = 10, Qty = 1, Subtotal = 10};
+        readonly LineItemDTO milk = new() {Name = "Milk", Price = 10};
         readonly LineItemDTO oil = new() {Name = "Oil", Price = 7};
 
         [Fact]
