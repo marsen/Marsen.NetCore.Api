@@ -9,7 +9,7 @@ namespace Marsen.NetCore.Api.Tests
     public class CartServiceTests
     {
         readonly CartService _cart = new();
-        readonly LineItem milk = new() {Name = "Milk", Subtotal = 10, Price = 10,Qty = 1};
+        readonly LineItem milk = new() {Name = "Milk", Subtotal = 10, Price = 10, Qty = 1};
 
         [Fact]
         public void TestPutIn()
@@ -26,7 +26,7 @@ namespace Marsen.NetCore.Api.Tests
             Assert.Equal(10, item.Subtotal);
         }
 
-        [Fact(Skip = "Later")]
+        [Fact]
         public void TestSubTotalShouldBePriceMultiplyByQty()
         {
             this._cart.PutIn(milk);
@@ -42,6 +42,7 @@ namespace Marsen.NetCore.Api.Tests
         public int Subtotal { get; set; }
         public int Price { get; set; }
         public int Qty { get; set; }
+        public string Id { get; set; }
     }
 
     public class CartService
@@ -51,7 +52,16 @@ namespace Marsen.NetCore.Api.Tests
         public void PutIn(LineItem lineItem)
         {
             var list = _dto.LineItems.ToList();
-            list.Add(lineItem);
+            if (list.Contains(lineItem))
+            {
+                var item = list.FirstOrDefault(x=>x.Id == lineItem.Id);
+                item.Qty++;
+            }
+            else
+            {
+                list.Add(lineItem);
+            }
+
             list.ForEach(x => x.Subtotal = x.Qty * x.Price);
             _dto.LineItems = list;
         }
