@@ -25,7 +25,7 @@ namespace Marsen.NetCore.Api.Tests
         public void TestSubTotal()
         {
             var expectedMilkSubtotal = 14;
-            var expectedOilSubtotal = 10;
+            var expectedOilSubtotal = 15;
             var cart = GetTestSubTotalCart();
             placeCartService.PutIn(cart);
             var milk = cart.LineItemList.First(x => x.Id == "MilkId");
@@ -41,7 +41,7 @@ namespace Marsen.NetCore.Api.Tests
             {
                 LineItemList = new List<LineItemDto>
                 {
-                    new() {Name = "Oil", Price = 5, Qty = 2,},
+                    new() {Id = "OilId",Name = "Oil", Price = 5, Qty = 3,},
                     new() {Id = "MilkId", Name = "Milk", Price = 7, Qty = 2,},
                 },
             };
