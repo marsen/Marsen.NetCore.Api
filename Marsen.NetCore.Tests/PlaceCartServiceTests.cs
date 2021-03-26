@@ -24,11 +24,15 @@ namespace Marsen.NetCore.Api.Tests
         [Fact]
         public void TestSubTotal()
         {
-            var expected = 14;
+            var expectedMilkSubtotal = 14;
+            var expectedOilSubtotal = 10;
             var cart = GetTestSubTotalCart();
             placeCartService.PutIn(cart);
-            var item = cart.LineItemList.First(x => x.Id == "MilkId");
-            Assert.Equal(expected, item.SubTotal);
+            var milk = cart.LineItemList.First(x => x.Id == "MilkId");
+            var oil = cart.LineItemList.First(x => x.Id == "OilId");
+            Assert.Equal(expectedMilkSubtotal, milk.SubTotal);
+            Assert.Equal(expectedOilSubtotal, oil.SubTotal);
+            
         }
 
         private CartDto GetTestSubTotalCart()
