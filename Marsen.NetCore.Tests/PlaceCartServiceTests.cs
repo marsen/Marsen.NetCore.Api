@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using FluentAssertions;
 using Marsen.NetCore.Api.Application;
 using Marsen.NetCore.Api.Model;
@@ -19,7 +21,29 @@ namespace Marsen.NetCore.Api.Tests
             cart.Total.Should().Be(expected);
         }
 
-        private  CartDto GetTestCart()
+        [Fact]
+        public void TestSubTotal()
+        {
+            var expected = 14;
+            var cart = GetTwoMilkCart();
+            placeCartService.PutIn(cart);
+            var item = cart.LineItemList.First();
+            Assert.Equal(expected, item.SubTotal);
+        }
+
+        private CartDto GetTwoMilkCart()
+        {
+            var cart = new CartDto
+            {
+                LineItemList = new List<LineItemDto>
+                {
+                    new() {Name = "Milk", Price = 7, Qty = 2,},
+                },
+            };
+            return cart;
+        }
+
+        private CartDto GetTestCart()
         {
             var cart = new CartDto
             {
