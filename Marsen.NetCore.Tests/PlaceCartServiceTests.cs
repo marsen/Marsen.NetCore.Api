@@ -32,7 +32,6 @@ namespace Marsen.NetCore.Api.Tests
             var oil = cart.LineItemList.First(x => x.Id == "OilId");
             Assert.Equal(expectedMilkSubtotal, milk.SubTotal);
             Assert.Equal(expectedOilSubtotal, oil.SubTotal);
-            
         }
 
         private CartDto GetTestSubTotalCart()
@@ -41,7 +40,7 @@ namespace Marsen.NetCore.Api.Tests
             {
                 LineItemList = new List<LineItemDto>
                 {
-                    new() {Id = "OilId",Name = "Oil", Price = 5, Qty = 3,},
+                    new() {Id = "OilId", Name = "Oil", Price = 5, Qty = 3,},
                     new() {Id = "MilkId", Name = "Milk", Price = 7, Qty = 2,},
                 },
             };
@@ -54,10 +53,9 @@ namespace Marsen.NetCore.Api.Tests
             {
                 LineItemList = new List<LineItemDto>
                 {
-                    new() {Name = "Milk", Price = 7, Qty = 2, SubTotal = 14},
-                    new() {Name = "Oil", Price = 5, Qty = 3, SubTotal = 15},
+                    new() {Name = "Milk", Price = 7, Qty = 2,},
+                    new() {Name = "Oil", Price = 5, Qty = 3,},
                 },
-                Total = 14
             };
             return cart;
         }
