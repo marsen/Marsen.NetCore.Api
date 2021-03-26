@@ -12,6 +12,7 @@ namespace Marsen.NetCore.Api.Application
 
         private void _cal(CartDto cart)
         {
+            cart.LineItemList.ForEach(x => x.SubTotal = x.Price * x.Qty);
             cart.Total = cart.LineItemList.Sum(x => x.SubTotal);
         }
     }

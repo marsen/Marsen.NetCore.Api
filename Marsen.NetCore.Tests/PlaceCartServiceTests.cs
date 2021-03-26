@@ -20,7 +20,6 @@ namespace Marsen.NetCore.Api.Tests
             placeCartService.PutIn(cart);
             cart.Total.Should().Be(expected);
         }
-
         [Fact]
         public void TestSubTotal()
         {
@@ -30,7 +29,7 @@ namespace Marsen.NetCore.Api.Tests
             var item = cart.LineItemList.First();
             Assert.Equal(expected, item.SubTotal);
         }
-
+        
         private CartDto GetTwoMilkCart()
         {
             var cart = new CartDto
