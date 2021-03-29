@@ -13,12 +13,13 @@ namespace Marsen.NetCore.Api.Tests
     public class PlaceCartServiceTests
     {
         readonly PlaceCartService placeCartService ;
+        private ICartDao _cartDao;
 
         public PlaceCartServiceTests()
         {
-            var cartDao = Substitute.For<ICartDao>();
+            _cartDao = Substitute.For<ICartDao>();
             placeCartService = new PlaceCartService();
-            placeCartService.CartDao = cartDao;
+            placeCartService.CartDao = _cartDao;
         }
         [Fact]
         public void TestCartTotal()
@@ -46,10 +47,8 @@ namespace Marsen.NetCore.Api.Tests
         public void TestPutIn()
         {
             var cart = GetTestCart();
-            var cartDao = Substitute.For<ICartDao>();
-            placeCartService.CartDao = cartDao;
             placeCartService.PutIn(cart);
-            cartDao.Received().Save();
+            _cartDao.Received().Save();
         }
 
         private CartDto GetTestSubTotalCart()
