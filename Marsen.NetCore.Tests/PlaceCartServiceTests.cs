@@ -4,6 +4,7 @@ using System.Linq;
 using FluentAssertions;
 using Marsen.NetCore.Api.Application;
 using Marsen.NetCore.Api.Model;
+using NSubstitute;
 using Xunit;
 
 namespace Marsen.NetCore.Api.Tests
@@ -32,6 +33,16 @@ namespace Marsen.NetCore.Api.Tests
             var oil = cart.LineItemList.First(x => x.Id == "OilId");
             Assert.Equal(expectedMilkSubtotal, milk.SubTotal);
             Assert.Equal(expectedOilSubtotal, oil.SubTotal);
+        }
+
+        [Fact]
+        public void TestPutIn()
+        {
+            var cart = GetTestCart();
+            var cartDao = Substitute.For<ICartDao>();
+            placeCartService.CartDao = cartDao;
+            placeCartService.PutIn(cart);
+            cartDao.Received().Save();
         }
 
         private CartDto GetTestSubTotalCart()
