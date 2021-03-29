@@ -5,6 +5,15 @@ namespace Marsen.NetCore.Api.Application
 {
     public class PlaceCartService
     {
+        public PlaceCartService()
+        {
+            
+        }
+        public PlaceCartService(ICartDao cartDao)
+        {
+            CartDao = cartDao;
+        }
+
         public void PutIn(CartDto cart)
         {
             _cal(cart);
@@ -17,7 +26,7 @@ namespace Marsen.NetCore.Api.Application
             cart.Total = cart.LineItemList.Sum(x => x.SubTotal);
         }
 
-        public ICartDao CartDao { get; set; }
+        private ICartDao CartDao { get; }
     }
 
     public interface ICartDao

@@ -18,8 +18,7 @@ namespace Marsen.NetCore.Api.Tests
         public PlaceCartServiceTests()
         {
             _cartDao = Substitute.For<ICartDao>();
-            placeCartService = new PlaceCartService();
-            placeCartService.CartDao = _cartDao;
+            placeCartService = new PlaceCartService(_cartDao);
         }
         [Fact]
         public void TestCartTotal()
