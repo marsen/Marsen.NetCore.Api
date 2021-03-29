@@ -8,6 +8,7 @@ namespace Marsen.NetCore.Api.Application
         public void PutIn(CartDto cart)
         {
             _cal(cart);
+            CartDao.Save();
         }
 
         private void _cal(CartDto cart)
