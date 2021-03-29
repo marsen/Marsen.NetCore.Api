@@ -4,6 +4,7 @@ using System.Linq;
 using FluentAssertions;
 using Marsen.NetCore.Api.Application;
 using Marsen.NetCore.Api.Model;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using NSubstitute;
 using Xunit;
 
@@ -11,15 +12,19 @@ namespace Marsen.NetCore.Api.Tests
 {
     public class PlaceCartServiceTests
     {
-        readonly PlaceCartService placeCartService = new();
+        readonly PlaceCartService placeCartService ;
 
+        public PlaceCartServiceTests()
+        {
+            var cartDao = Substitute.For<ICartDao>();
+            placeCartService = new PlaceCartService();
+            placeCartService.CartDao = cartDao;
+        }
         [Fact]
         public void TestCartTotal()
         {
             var expected = 29;
             var cart = GetTestCart();
-            var cartDao = Substitute.For<ICartDao>();
-            placeCartService.CartDao = cartDao;
             placeCartService.PutIn(cart);
             cart.Total.Should().Be(expected);
         }
@@ -30,8 +35,6 @@ namespace Marsen.NetCore.Api.Tests
             var expectedMilkSubtotal = 14;
             var expectedOilSubtotal = 15;
             var cart = GetTestSubTotalCart();
-            var cartDao = Substitute.For<ICartDao>();
-            placeCartService.CartDao = cartDao;
             placeCartService.PutIn(cart);
             var milk = cart.LineItemList.First(x => x.Id == "MilkId");
             var oil = cart.LineItemList.First(x => x.Id == "OilId");
