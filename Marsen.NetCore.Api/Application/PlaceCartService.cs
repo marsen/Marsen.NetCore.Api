@@ -5,10 +5,6 @@ namespace Marsen.NetCore.Api.Application
 {
     public class PlaceCartService
     {
-        public PlaceCartService()
-        {
-            
-        }
         public PlaceCartService(ICartDao cartDao)
         {
             CartDao = cartDao;

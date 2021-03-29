@@ -10,17 +10,27 @@ namespace Marsen.NetCore.Api.Controllers
     public class CartController : ControllerBase
     {
         private readonly ILogger<CartController> _logger;
-        readonly PlaceCartService service = new();
+        readonly PlaceCartService service;
 
         public CartController(ILogger<CartController> logger)
         {
             _logger = logger;
+            service = new PlaceCartService(new CartDao());
         }
 
         [HttpGet]
         public JsonResult Get(CartDto cart)
         {
             return new(cart);
+        }
+    }
+
+    public class CartDao : ICartDao
+    {
+        public void Save()
+        {
+            //// TODO
+            throw new System.NotImplementedException();
         }
     }
 }
