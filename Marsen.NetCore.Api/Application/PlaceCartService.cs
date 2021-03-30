@@ -10,9 +10,10 @@ namespace Marsen.NetCore.Api.Application
 
         public PlaceCartService()
         {
-            _cartDao = new CartDao();
+            var cartFactory = new CartFactory();
+            _cartDao = cartFactory.Create("Mock");
         }
-        
+
         public PlaceCartService(ICartDao cartDao)
         {
             _cartDao = cartDao;
@@ -28,6 +29,20 @@ namespace Marsen.NetCore.Api.Application
         {
             cart.LineItemList.ForEach(x => x.SubTotal = x.Price * x.Qty);
             cart.Total = cart.LineItemList.Sum(x => x.SubTotal);
+        }
+    }
+
+    public class CartFactory
+    {
+        public ICartDao Create(string mock)
+        {
+            switch (mock)
+            {
+                case "Mock":
+                    return new MockCartDao();
+                default:
+                    return new CartDao();
+            }
         }
     }
 }
