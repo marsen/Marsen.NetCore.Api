@@ -30,18 +30,4 @@ namespace Marsen.NetCore.Api.Application
             cart.Total = cart.LineItemList.Sum(x => x.SubTotal);
         }
     }
-
-    public static class CartFactory
-    {
-        public static ICartDao Create(string mock)
-        {
-            switch (mock)
-            {
-                case "Mock":
-                    return new MockCartDao();
-                default:
-                    return new CartDao();
-            }
-        }
-    }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Marsen.NetCore.Api.Repository
 {
-    public class CartDao : ICartDao
+    public class MockCartDao :ICartDao
     {
         public void Save()
         {
