@@ -11,7 +11,7 @@ namespace Marsen.NetCore.Api.Application
         public PlaceCartService()
         {
             var factory = new CartFactory();
-            _cartDao = factory.Create("Mock");
+            _cartDao = factory.Create();
         }
 
         public PlaceCartService(ICartDao cartDao)
