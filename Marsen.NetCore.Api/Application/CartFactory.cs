@@ -2,9 +2,9 @@
 
 namespace Marsen.NetCore.Api.Application
 {
-    public static class CartFactory
+    public class CartFactory
     {
-        public static ICartDao Create(string mock)
+        public ICartDao Create(string mock)
         {
             switch (mock)
             {
