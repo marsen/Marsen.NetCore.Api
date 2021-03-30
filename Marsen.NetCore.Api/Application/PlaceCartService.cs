@@ -8,6 +8,11 @@ namespace Marsen.NetCore.Api.Application
     {
         private readonly ICartDao _cartDao;
 
+        public PlaceCartService()
+        {
+            _cartDao = new CartDao();
+        }
+        
         public PlaceCartService(ICartDao cartDao)
         {
             _cartDao = cartDao;
