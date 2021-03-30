@@ -31,7 +31,7 @@ namespace Marsen.NetCore.Api.Application
         }
     }
 
-    public class CartFactory
+    public static class CartFactory
     {
         public static ICartDao Create(string mock)
         {
