@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Marsen.NetCore.Api.Factory;
 using Marsen.NetCore.Api.Model;
 using Marsen.NetCore.Api.Repository;
 
@@ -10,7 +11,7 @@ namespace Marsen.NetCore.Api.Application
 
         public PlaceCartService()
         {
-            var factory = new CartFactory();
+            var factory = new MockCartFactory();
             _cartDao = factory.Create();
         }
 
