@@ -4,6 +4,7 @@ using System.Linq;
 using FluentAssertions;
 using Marsen.NetCore.Api.Application;
 using Marsen.NetCore.Api.Model;
+using Marsen.NetCore.Api.Repository;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using NSubstitute;
 using Xunit;
