@@ -24,5 +24,12 @@ namespace Marsen.NetCore.Api.Controllers
         {
             return new(cart);
         }
+        
+        [HttpPut]
+        public ActionResult PutIn(CartDto cart)
+        {
+            _service.PutIn(cart);
+            return Ok();
+        }
     }
 }
