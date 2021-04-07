@@ -13,10 +13,10 @@ namespace Marsen.NetCore.Api.Controllers
         private readonly ILogger<CartController> _logger;
         readonly PlaceCartService _service;
 
-        public CartController(ILogger<CartController> logger)
+        public CartController(ILogger<CartController> logger, ICartDao cartDao)
         {
             _logger = logger;
-            _service = new PlaceCartService(new CartDao());
+            _service = new PlaceCartService(cartDao);
         }
 
         [HttpGet]
