@@ -1,11 +1,11 @@
 ﻿namespace Marsen.NetCore.Api.Repository
 {
-    public class MockCartDao :ICartDao
+    public class MockCartDao : ICartDao
     {
         public void Save()
         {
             //// TODO
-            throw new System.NotImplementedException();
+            throw new System.NotImplementedException("This is Mock Dao");
         }
     }
 }

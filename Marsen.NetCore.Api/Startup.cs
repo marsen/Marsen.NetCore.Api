@@ -32,8 +32,8 @@ namespace Marsen.NetCore.Api
             {
                 c.SwaggerDoc("v1", new OpenApiInfo {Title = "Marsen.NetCore.Api", Version = "v1"});
             });
-            services.AddScoped<ICartDao, MockCartDao>();
             services.AddScoped<ICartDao, CartDao>();
+            //// services.AddScoped<ICartDao, MockCartDao>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -5,7 +5,7 @@
         public void Save()
         {
             //// TODO
-            throw new System.NotImplementedException();
+            throw new System.NotImplementedException("This is Cart Dao");
         }
     }
 }
